@@ -13,8 +13,11 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.post('/charge', function(request, response) {
+  var stripeToken = req.body.stripeToken;
+  console.log()
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-
