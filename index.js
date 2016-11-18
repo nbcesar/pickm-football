@@ -14,8 +14,8 @@ app.get('/', function(request, response) {
 });
 
 app.post('/charge', function(request, response) {
-  var stripeToken = req.body.stripeToken;
-  console.log()
+  //var stripeToken = req.body.stripeToken;
+  console.log(request.body);
 });
 
 app.listen(app.get('port'), function() {
