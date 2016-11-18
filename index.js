@@ -15,6 +15,7 @@ app.get('/', function(request, response) {
 
 app.post('/charge', function(request, response) {
   //var stripeToken = req.body.stripeToken;
+  console.log('at /charge post');
   console.log(request.body);
 });
 
