@@ -39,15 +39,15 @@ app.get('/charge', function(request, response) {
 app.post('/charge', function(request, response) {
   console.log(request.body);
   var stripeToken = request.body.stripeToken;
-  console.log('stripeToken', stripeToken);
+  //console.log('stripeToken', stripeToken);
   var token = request.body.id;
   var price = request.body.amount;
-  console.log(token, price);
+  //console.log(token, price);
 
   var charge = stripe.charges.create({
     source: token,
     currency: 'usd',
-    amount: price,
+    amount: 2500,
     description: 'Example charge'
   },
   function(err, charge) {
