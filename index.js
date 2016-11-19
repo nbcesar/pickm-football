@@ -55,7 +55,8 @@ app.post('/charge', function(request, response) {
       console.log(err);
       response.send('error');
     } else {
-      response.send('success');
+      console.log('success');
+      response.json({chare: 'success'});
     }
   });
   //response.status(201).json({name: 'charge'});
