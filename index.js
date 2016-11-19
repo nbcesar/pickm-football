@@ -1,4 +1,5 @@
 var express = require('express');
+var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 var bodyParser = require('body-parser');
 var request = require('request');
@@ -36,9 +37,11 @@ app.get('/charge', function(request, response) {
 });
 
 app.post('/charge', function(request, response) {
-  //var stripeToken = req.body.stripeToken;
-  console.log('at /charge posting');
-  console.log(request.body);
+  var stripeToken = req.body.stripeToken;
+  console.log('stripeToken', stripeToken);
+  var token = req.body.id;
+  var price = req.body.price;
+  console.log(token, price);
   response.status(201).json({name: 'charge'});
 });
 
