@@ -47,11 +47,13 @@ app.post('/charge', function(request, response) {
   },
   function(err, charge) {
     if (err && err.type === 'StripeCardError') {
-      console.log(err);
       response.send('error');
-    } else {
-      console.log('success');
-      response.json({chare: 'success'});
+    }
+    else if (err) {
+      response.json({err});
+    }
+    else {
+      response.json({charge: 'success'});
     }
   });
   //response.status(201).json({name: 'charge'});
