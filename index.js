@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/charge', function(request, response) {
   console.log('at / get');
+  //The server allows any domain to call it with the XMLHttpRequest
+  this.response.setHeader("Access-Control-Allow-Origin", "*");
   response.status(201).json({name:'get'});
 });
 
