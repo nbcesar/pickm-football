@@ -10,10 +10,14 @@ app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
 app.get('/charge', function(request, response) {
   console.log('at / get');
-  //The server allows any domain to call it with the XMLHttpRequest
-  this.response.setHeader("Access-Control-Allow-Origin", "*");
   response.status(201).json({name:'get'});
 });
 
