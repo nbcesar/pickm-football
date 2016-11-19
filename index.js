@@ -11,7 +11,7 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  console.log('at / get');
 });
 
 app.post('/charge', function(request, response) {
