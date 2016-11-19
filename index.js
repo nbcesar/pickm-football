@@ -40,7 +40,7 @@ app.post('/charge', function(request, response) {
   console.log(request.body);
   var stripeToken = request.body.stripeToken;
   //console.log('stripeToken', stripeToken);
-  var token = request.body.id;
+  var token = request.body;
   var price = request.body.amount;
   //console.log(token, price);
 
