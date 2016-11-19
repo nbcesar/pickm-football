@@ -37,10 +37,10 @@ app.get('/charge', function(request, response) {
 });
 
 app.post('/charge', function(request, response) {
-  var stripeToken = req.body.stripeToken;
+  var stripeToken = request.body.stripeToken;
   console.log('stripeToken', stripeToken);
-  var token = req.body.id;
-  var price = req.body.price;
+  var token = request.body.id;
+  var price = request.body.price;
   console.log(token, price);
   response.status(201).json({name: 'charge'});
 });
