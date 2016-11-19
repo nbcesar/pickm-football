@@ -37,12 +37,28 @@ app.get('/charge', function(request, response) {
 });
 
 app.post('/charge', function(request, response) {
+  console.log(request.body);
   var stripeToken = request.body.stripeToken;
   console.log('stripeToken', stripeToken);
   var token = request.body.id;
-  var price = request.body.price;
+  var price = request.body.amount;
   console.log(token, price);
-  response.status(201).json({name: 'charge'});
+
+  var charge = stripe.charges.create({
+    source: token,
+    currency: 'usd',
+    amount: price,
+    description: 'Example charge'
+  },
+  function(err, charge) {
+    if (err && err.type === 'StripeCardError') {
+      console.log(err);
+      response.send('error');
+    } else {
+      response.send('success');
+    }
+  });
+  //response.status(201).json({name: 'charge'});
 });
 
 app.listen(app.get('port'), function() {
