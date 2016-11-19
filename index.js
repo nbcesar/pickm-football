@@ -10,8 +10,9 @@ app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', function(request, response) {
+app.get('/charge', function(request, response) {
   console.log('at / get');
+  response.status(201).json({name:'get'});
 });
 
 app.post('/charge', function(request, response) {
