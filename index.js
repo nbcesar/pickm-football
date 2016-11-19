@@ -18,6 +18,7 @@ app.post('/charge', function(request, response) {
   //var stripeToken = req.body.stripeToken;
   console.log('at /charge posting');
   console.log(request.body);
+  response.status(201).json({name: 'charge'});
 });
 
 app.listen(app.get('port'), function() {
